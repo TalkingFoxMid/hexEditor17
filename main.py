@@ -1,5 +1,8 @@
+from PyQt5.QtGui import QKeyEvent
 from PyQt5.QtWidgets import *
 import sys
+
+from MainWidget import MainWidget
 from hexArray import HexArray
 from tableWidget import TableWidget
 
@@ -7,11 +10,9 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.setCentralWidget(MainWidget())
 
 
-        self.hex_array = HexArray()
-        table_widget = TableWidget(self.hex_array)
-        self.setCentralWidget(table_widget)
 
 
 
