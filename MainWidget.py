@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QKeyEvent
+from PyQt5.QtGui import QKeyEvent, QWheelEvent
 from PyQt5.QtWidgets import QWidget, QHBoxLayout
 
 from ControllerWidget import ControllerWidget
@@ -18,10 +18,12 @@ class MainWidget(QWidget):
         self.setLayout(self.box_l)
     def open_file(self):
         file_name = self.controller_widget.get_file_name()
+        self.controller_widget.add_edited_string()
         with open(file_name, "rb") as fr:
             list_bytes = list(fr.read())
         self.hex_array = HexArray(list_bytes)
         table_widget = TableWidget(self.hex_array)
+        print(table_widget.page_count)
         self.current_table_widget.close()
         self.box_l.replaceWidget(self.current_table_widget,
                                  table_widget)
@@ -35,6 +37,11 @@ class MainWidget(QWidget):
     def keyPressEvent(self, a0: QKeyEvent) -> None:
         if a0.key() == 16777220:
             self.current_table_widget.disable_edit_mode()
+    def wheelEvent(self, a0: QWheelEvent) -> None:
+        if a0.angleDelta().y() > 0:
+            self.controller_widget.get_right()
+        else:
+            self.controller_widget.get_left()
 
 
 

@@ -2,10 +2,10 @@ from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel
 
 
 class TablePageWidget(QWidget):
-    def __init__(self):
+    def __init__(self, columns):
         super().__init__()
         self.new_grid_layout = QGridLayout()
-        self.new_grid_layout.setColumnStretch(16, 16)
+        self.new_grid_layout.setColumnStretch(columns - 1, 16)
         self.new_grid_layout.setContentsMargins(0, 0, 0, 0)
         self.new_grid_layout.setSpacing(0)
         self.setLayout(self.new_grid_layout)

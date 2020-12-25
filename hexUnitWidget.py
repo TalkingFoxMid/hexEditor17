@@ -3,8 +3,9 @@ from PyQt5.QtWidgets import QWidget, QGridLayout, QVBoxLayout, QLabel, QLineEdit
 from hexArray import HexArray
 
 class HexUnitWidget(QLabel):
-    def __init__(self, byte_index, init_value, hex_array, table_widget, was_edit=False):
+    def __init__(self, byte_index, init_value, hex_array, table_widget, representation, was_edit=False):
         super().__init__()
+        self.representation = representation
         self.setFixedWidth(30)
         self.setFixedHeight(30)
         self.setText(str(init_value))
