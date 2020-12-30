@@ -1,4 +1,4 @@
-class Integer_Hexer:
+class IntegerHexer:
     def get_hex_string(self, number):
         result = hex(number)
         result = result[2:].upper()
